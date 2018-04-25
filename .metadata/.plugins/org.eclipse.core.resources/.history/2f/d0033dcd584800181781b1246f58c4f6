@@ -1,0 +1,22 @@
+package t2;
+
+public class Main {
+	class Thread1 implements Runnable {
+		int result;
+		boolean flag = true;
+
+		public int getResult() {
+			return this.result;
+		}
+
+		@Override
+		public void run() {
+
+		}
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}
