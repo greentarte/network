@@ -9,21 +9,20 @@ import java.net.URLEncoder;
 
 public class Http2 {
 
-	public static void main(String[] args) throws Exception {
-		// webserver∞° ¡∏¿Á«œ∞Ì http «¡∑Œ≈‰ƒ›∑Œ ø‰√ª
-		String name = "≈¬øÏ";
-		name = URLEncoder.encode(name,"UTF-8");
-		String surl = "http://127.0.0.1/login?id=qq&pwd=11&name="+name;
-		URL url = new URL(surl);
+	public static void main(String[] args) throws Exception{
+		String surl = "http://localhost/login?id=qq&pwd=11&name=";
+		URL url = new URL(surl+ URLEncoder.encode("ÏòÅÎ¨¥","UTF-8"));
 		URLConnection con = url.openConnection();
 		con.setConnectTimeout(5000);
-		InputStream in = con.getInputStream();
-		InputStreamReader ir = new InputStreamReader(in, "UTF-8");
+		InputStream is = con.getInputStream();
+		InputStreamReader ir = new InputStreamReader(is,"UTF-8");
 		BufferedReader br = new BufferedReader(ir);
-
+		
 		String str = br.readLine();
 		System.out.println(str);
+		
 		br.close();
+		ir.close();
+		is.close();
 	}
-
 }

@@ -5,23 +5,19 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class Http3 {
-
-	public static void main(String[] args) throws Exception {
-		URL url = new URL("http://127.0.0.1/ppt.zip");
+	
+	public static void main(String[] args) throws Exception{
+		URL url = new URL("http://localhost/bg1.jpg");
 		InputStream in = url.openStream();
-		FileOutputStream out = new FileOutputStream("down.zip");
-		int i = 0;
-		while (true) {
+		FileOutputStream out = new FileOutputStream("down.jpg");
+		int i=0;
+		while(true) {
 			i = in.read();
-			System.out.println(i);
-			if (i == -1) {
-				// -1은 파일이 끝일때 값 마지막 값
+			if(i == -1) {
 				break;
 			}
 			out.write(i);
-		}	
-		in.close();
-		out.close();
+		}
 	}
 
 }

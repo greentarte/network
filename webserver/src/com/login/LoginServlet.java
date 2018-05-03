@@ -1,4 +1,4 @@
-package com.login;
+/*package com.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,31 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet({ "/LoginServlet", "/login" })
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		// 들오올떄 request , 나갈때 response
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
-		String name = request.getParameter("name");
-		
-//		name = new String(name.getBytes("8859_1"),"EUC-KR");
-				
-		System.out.println(name);
-		String result = "";
-		if (id.equals("qq") && pwd.equals("11")) {
-			result = "정상";
+    
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		String id = req.getParameter("id");
+		String pwd = req.getParameter("pwd");
+		String name = req.getParameter("name");
+		String result;
+		if(id.equals("qq") && pwd.equals("11")) {
+			result = name + " 통과";
 		} else {
-			result = "비정상";
+			result = name + " 실패";
 		}
-		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
+
+		res.setCharacterEncoding("UTF-8");
+		PrintWriter out = res.getWriter();
 		out.print(result);
 		out.close();
 	}
-
 }
+*/
