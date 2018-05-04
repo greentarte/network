@@ -7,15 +7,15 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 //Server_teacher 에서 Sender클래스만 분리한거임
-class Sender implements Runnable {
+class Sender2 implements Runnable {
 	Socket socket;
 	OutputStream out;
 	OutputStreamWriter outw; // 한글 보낼때 사용
 
-	public Sender() {
+	public Sender2() {
 	}
 
-	public Sender(Socket socket) throws IOException {
+	public Sender2(Socket socket) throws IOException {
 		this.socket = socket;
 		out = socket.getOutputStream();
 		//tcp1에서 사용한 예제와 다른 점은 socket과 OutputStream 객체들을 공유하느냐 아니냐의 차이
@@ -72,7 +72,7 @@ public class Server_teacher2 {
 			Socket socket = null;
 			System.out.println("Ready Server....");
 			socket = serverSocket.accept();
-			Sender sender = new Sender(socket);
+			Sender2 sender = new Sender2(socket);
 			new Thread(sender).start();
 			System.out.println("Accepted Client...." + socket.getInetAddress());
 
