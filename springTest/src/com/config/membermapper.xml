@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.mapper.MemberMapper">
+	<!-- parameterType = "String" 문자열 결과를 받는다 -->
+	<!-- resultType="member"  Vo객체 혀앹로 결과를 받는다 -->
+	
+	
+	<select id="select"  parameterType="String" >
+		SELECT * FROM MEMBER WHERE total=#{email}
+	</select>
+	
+	<select id="selectall"  resultType="member" >
+		SELECT * FROM MEMBER
+	</select>
+	<insert id="insert" parameterType="member">
+		INSERT INTO MEMBER VALUES (#{email},#{pwd},#{publicdistance},#{personalmileage},#{name})
+	</insert>
+	<update id="update" parameterType="member">
+		UPDATE MEMBER SET PWD=#{pwd}, PUBLICDISTANCE=#{publicdistance},PERSONALMILEAGE=#{personalmileage}, NAME=#{name} WHERE total=#{email}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM MEMBER WHERE total=#{email}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+

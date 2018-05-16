@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Client extends Thread{
 	
-	String address = "70.12.114.130";
+	String address = "192.168.0.72";
 	Socket socket;
 	Scanner scanner;
 	boolean cflag = true;

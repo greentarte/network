@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.hw.vo.User" alias="user"/>
+		<typeAlias type="com.hw.vo.Product" alias="product"/>
+		<typeAlias type="com.hw.vo.Correlation" alias="correlation"/>
+		<typeAlias type="com.hw.vo.Member" alias="member"/>
+		<typeAlias type="com.hw.vo.AttInfo" alias="attendance"/>
+		<typeAlias type="com.hw.vo.UnitInfo" alias="unit"/>
+		<typeAlias type="com.hw.vo.AttResult" alias="result"/>
+		<typeAlias type="com.hw.vo.DateInfo" alias="dateinfo"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/config/usermapper.xml"/>
+		<mapper resource="com/config/productmapper.xml"/>
+		<mapper resource="com/config/correlationmapper.xml"/>
+		<mapper resource="com/config/membermapper.xml"/>
+	</mappers>
+	
+</configuration>
+
+
+
+
+
+

@@ -16,7 +16,6 @@ public class MainController {
 	
 
 	@RequestMapping("/main.do")
-	@ResponseBody
 	public String main(HttpServletRequest request) {
 		
 		String speed = request.getParameter("speed");
@@ -26,6 +25,7 @@ public class MainController {
 		
 		return "main";
 	}
+	
 
 
 }

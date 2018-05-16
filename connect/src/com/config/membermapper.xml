@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.mapper.MemberMapper">
+
+
+	<select id="select" parameterType="String" resultType="String">  
+		SELECT pwd FROM member WHERE id=#{id}
+	</select>
+	
+	
+	<select id="selectName" parameterType="String" resultType="String">  
+		SELECT name FROM member WHERE id=#{id}
+	</select>
+	
+	
+    <insert id="insertMember" parameterType="member">
+		INSERT INTO member VALUES (#{id},#{pwd},#{name})
+	</insert>
+
+
+	<select id="selectAll" resultType="unit">  
+		SELECT * FROM unit_period
+	</select>
+	
+	
+	<insert id="insertData9" parameterType="attendance">
+		INSERT INTO att_info(id,att_date,unit,time_nine,time_two,time_six, month,day) VALUES (#{id},#{att_date},#{unit},#{time_nine},0,0,#{month},#{day})
+	</insert>
+	
+	<update id="updateData2" parameterType="attendance">
+	    UPDATE att_info SET time_two=#{time_two} WHERE id=#{id} AND att_date=#{att_date}
+	</update> 
+	
+	
+	<update id="updateData6" parameterType="attendance">
+	    UPDATE att_info SET time_six=#{time_six} WHERE id=#{id} AND att_date=#{att_date}
+	</update> 
+	
+	
+    <select id="selectTime" parameterType="attendance" resultType="attendance">  
+		select * FROM att_info WHERE id=#{id} AND att_date=#{att_date}
+	</select>
+	
+	
+	<update id="updateResult" parameterType="attendance">
+	    UPDATE att_info SET result=#{result} WHERE id=#{id} AND att_date=#{att_date}
+	</update>
+	
+	
+	<select id="selectAttData"  parameterType="attendance" resultType="attendance" >
+	   select day, result from att_info where result is not null and id=#{id} and month=#{month}
+	</select>
+	
+	
+	<select id="selectResult"  resultType="result" >
+         select id,result,count(result) as count,round(count(result)/150*100,0) as percent
+         from att_info
+         where result='출석'
+         group by id,result
+         order by id
+	</select>
+	
+	
+	<select id="selectId"  resultType="String" >
+         select distinct id from att_info
+	</select>
+	
+    <select id="selectPersonal"  parameterType="String" resultType="result" >
+         select result,
+         round(count(result)/ (select count(att_date) from att_info where id=#{id}) *100,0) as count
+         from att_info
+         where id=#{id}
+         group by result
+	</select>
+	
+	
+	<select id="selectMyView"  parameterType="attendance" resultType="result" >
+      select result, count(result) as count
+      from att_info
+      where id=#{id} and unit=#{unit} and result is not null
+      group by result
+	</select>
+	
+	
+	
+    <select id="selectTotal"  parameterType="String" resultType="result" >
+         select round(count(result)/150*100,0) as percent
+         from att_info
+         where result='출석' and id=#{id}
+         group by id,result
+         order by id
+	</select>
+	
+	
+	<select id="selectDateInfo"  parameterType="unit" resultType="dateinfo" >
+         select start_date, end_date, total
+         from unit_period
+         where unit=#{unit}
+	</select>
+	
+	
+	
+
+		
+</mapper>
+
+
+
+
+
+
