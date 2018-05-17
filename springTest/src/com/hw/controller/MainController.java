@@ -49,4 +49,12 @@ public class MainController {
 		System.out.println("test¡æ∑·");
 		return "test";
 	}
+	
+	@RequestMapping("/start.do")
+
+	public String start(HttpServletResponse res) throws Exception {
+		
+		return "index";
+	}
+	
 }

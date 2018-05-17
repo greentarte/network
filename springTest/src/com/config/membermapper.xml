@@ -4,11 +4,11 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hw.mapper.MemberMapper">
 	<!-- parameterType = "String" 문자열 결과를 받는다 -->
-	<!-- resultType="member"  Vo객체 혀앹로 결과를 받는다 -->
-	
+	<!-- resultType="member"  Vo객체 형태로 결과를 받는다 -->
+	<!-- 작성 후 세미콜론을 사용안함 -->
 	
 	<select id="select"  parameterType="String" >
-		SELECT * FROM MEMBER WHERE total=#{email}
+		SELECT * FROM MEMBER WHERE EMAIL=#{email}
 	</select>
 	
 	<select id="selectall"  resultType="member" >
@@ -18,10 +18,10 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		INSERT INTO MEMBER VALUES (#{email},#{pwd},#{publicdistance},#{personalmileage},#{name})
 	</insert>
 	<update id="update" parameterType="member">
-		UPDATE MEMBER SET PWD=#{pwd}, PUBLICDISTANCE=#{publicdistance},PERSONALMILEAGE=#{personalmileage}, NAME=#{name} WHERE total=#{email}
+		UPDATE MEMBER SET PWD=#{pwd}, PUBLICDISTANCE=#{publicdistance},PERSONALMILEAGE=#{personalmileage}, NAME=#{name} WHERE EMAIL=#{email}
 	</update>
 	<delete id="delete" parameterType="String">
-		DELETE FROM MEMBER WHERE total=#{email}
+		DELETE FROM MEMBER WHERE EMAIL=#{email}
 	</delete>
 	
 </mapper>

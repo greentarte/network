@@ -1,6 +1,6 @@
 package com.hw.vo;
 
-// t_product
+
 public class Member {
 	String email;
 	String pwd;
