@@ -26,14 +26,14 @@ public class MainController {
 	}
 
 	@Resource(name = "memberBiz")
-	Biz<Member, String> member;
+	Biz<Member, String> biz;
 
 	@RequestMapping("/test.do")
 
 	public String test(HttpServletResponse res) throws Exception {
 		// JSONArray ja = new JSONArray();
 		List<Member> list = null;
-		list = member.get();				
+		list = biz.get();				
 		for (Member u : list) {
 			// JSONArray data = new JSONArray();
 			System.out.println(u.toString());
@@ -56,5 +56,54 @@ public class MainController {
 		
 		return "index";
 	}
-	
+	   //로그인 
+	   @RequestMapping("/login.do")
+	   public void login(HttpServletResponse res, Member member) throws Exception{
+          res.setCharacterEncoding("UTF-8");
+		  PrintWriter out = res.getWriter();	   
+		  String email = member.getEmail();
+	      String pwd = member.getPwd();
+	      
+	     System.out.println(email);
+	      Member mem = biz.get(email);
+	      System.out.println(mem.toString());
+	      
+	      
+	      if(biz.get(email)!=null && mem.getEmail().equals(email)&&mem.getPwd().equals(pwd)) {
+	    
+
+	    	    out.println("1"+","+email);
+	    	 
+	      }
+	      else {
+	    	 out.println("0");
+	      }  
+	      
+	      out.close();
+	      
+	     
+	   }
+	   
+	   
+	   //회원가입
+	   @RequestMapping("/join.do")
+	   public void join(HttpServletResponse res,Member member)throws Exception{
+
+	      res.setCharacterEncoding("UTF-8");
+	      PrintWriter out = res.getWriter();
+	 
+	        try{
+	             biz.register(member);
+	             out.println("1");     
+	        } 
+	        catch(Exception e)
+	        {     
+	             out.println("0");
+	        }
+	     
+	        
+	      out.close();
+	      
+	      
+	   }
 }

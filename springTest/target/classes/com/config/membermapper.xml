@@ -3,11 +3,18 @@
 PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hw.mapper.MemberMapper">
-	<!-- parameterType = "String" 문자열 결과를 받는다 -->
-	<!-- resultType="member"  Vo객체 형태로 결과를 받는다 -->
+	<!-- parameterType = "String" 문자열 입력한다  입력 형태 설정-->
+	<!-- resultType="member"  받는다 받는 형태 설정 -->
 	<!-- 작성 후 세미콜론을 사용안함 -->
+		<resultMap type="member" id="memberResult">
+		<result column="email" property="email"/>
+		<result column="pwd" property="pwd"/>
+	<result column="publicdistance" property="publicdistance"/>
+	<result column="personalmileage" property="personalmileage"/>
+		<result column="name" property="name"/>
+	</resultMap>
 	
-	<select id="select"  parameterType="String" >
+	<select id="select"  parameterType="String"  resultType="member">
 		SELECT * FROM MEMBER WHERE EMAIL=#{email}
 	</select>
 	
