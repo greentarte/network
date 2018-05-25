@@ -6,17 +6,17 @@ public class Member {
 	String pwd;
 	String name;
 	String publicDistance;
-	String personalMilage;
+	String personalMileage;
 
 	public Member() {
 	}
 
-	public Member(String email, String pwd, String name, String publicDistance, String personalMilage) {
+	public Member(String email, String pwd, String name, String publicDistance, String personalMileage) {
 		this.email = email;
 		this.pwd = pwd;
 		this.name = name;
 		this.publicDistance = publicDistance;
-		this.personalMilage = personalMilage;
+		this.personalMileage = personalMileage;
 	}
 
 	public String getEmail() {
@@ -51,18 +51,18 @@ public class Member {
 		this.publicDistance = publicDistance;
 	}
 
-	public String getPersonalMilage() {
-		return personalMilage;
+	public String getPersonalMileage() {
+		return personalMileage;
 	}
 
-	public void setPersonalMilage(String personalMilage) {
-		this.personalMilage = personalMilage;
+	public void setPersonalMileage(String personalMileage) {
+		this.personalMileage = personalMileage;
 	}
 
 	@Override
 	public String toString() {
 		return "Member [email=" + email + ", pwd=" + pwd + ", name=" + name + ", publicDistance=" + publicDistance
-				+ ", personalMilage=" + personalMilage + "]";
+				+ ", personalMileage=" + personalMileage + "]";
 	}
 
 }

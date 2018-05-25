@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.mapper.Car_statusMapper">
+	<!-- parameterType = "String" 문자열 입력한다  입력 형태 설정-->
+	<!-- resultType="member"  받는다 받는 형태 설정 -->
+	<!-- 작성 후 세미콜론을 사용안함 -->
+		<resultMap type="car_status" id="car_statusResult">
+		<result column="code" property="code"/>
+		<result column="available_distance" property="available_distance"/>
+	<result column="battery_capacity" property="battery_capacity"/>
+	<result column="indoor_temp" property="indoor_temp"/>
+		<result column="outdoor_temp" property="outdoor_temp"/>		
+		<result column="speed" property="speed"/>
+		<result column="charging_status" property="charging_status"/>
+		<result column="charging_after_distance" property="charging_after_distance"/>
+		<result column="consumption_after_charging" property="consumption_after_charging"/>
+		<result column="monthly_distance" property="monthly_distance"/> 
+		<result column="monthly_battery_use" property="monthly_battery_use"/>
+		<result column="monthly_fuel_efficiency" property="monthly_fuel_efficiency"/>
+		<result column="cumulative_mileage" property="cumulative_mileage"/>
+		<result column="charge_amount" property="charge_amount"/>
+		<result column="latitude" property=" latitude"/>
+		<result column="longtitude" property="longtitude"/>		
+		<result column="model_name" property="model_name"/>
+		<result column="user_name" property="user_name"/>
+		<result column="charging_after_fuel_efficiency" property="charging_after_fuel_efficiency"/>
+
+	</resultMap>
+
+	
+	<select id="select"  parameterType="String"  resultType="car_status">
+		SELECT * FROM CAR_STATUS WHERE code=#{code}
+	</select>
+	
+	<select id="selectall"  resultType="car_status" >
+		SELECT * FROM CAR_STATUS
+	</select>
+	<!-- #을 붙이면  ""를 붙여서 보냄,  $을 붙이면 있는그대로 보냄 -->
+	<insert id="insert" parameterType="car_status">
+		INSERT INTO CAR_STATUS VALUES (#{code},${available_distance},${battery_capacity},${indoor_temp},${outdoor_temp},${speed},${charging_status},${charging_after_distance},${consumption_after_charging},${monthly_distance},${monthly_battery_use},${monthly_fuel_efficiency},${cumulative_mileage},${charge_amount},${latitude},${longtitude},#{model_name},#{user_name},${charging_after_fuel_efficiency})
+	</insert>	
+	<update id="update" parameterType="car_status">
+		UPDATE CAR_STATUS SET available_distance=${available_distance}, battery_capacity=${battery_capacity},indoor_temp=${indoor_temp},outdoor_temp=${outdoor_temp},speed=${speed},charging_status=${charging_status},charging_after_distance=${charging_after_distance},consumption_after_charging=${consumption_after_charging},monthly_distance=${monthly_distance},monthly_battery_use=${monthly_battery_use},monthly_fuel_efficiency=${monthly_fuel_efficiency},cumulative_mileage=${cumulative_mileage},charge_amount=${charge_amount},latitude=${latitude},longtitude=${longtitude},model_name=#{model_name},user_name=#{user_name},charging_after_fuel_efficiency=${charging_after_fuel_efficiency} WHERE code=#{code}
+	</update>
+	<delete id="delete" parameterType="String">
+		DELETE FROM CAR_STATUS WHERE code=#{code}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+

@@ -9,8 +9,8 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<resultMap type="member" id="memberResult">
 		<result column="email" property="email"/>
 		<result column="pwd" property="pwd"/>
-	<result column="publicdistance" property="publicdistance"/>
-	<result column="personalmileage" property="personalmileage"/>
+	<result column="publicdistance" property="publicDistance"/>
+	<result column="personalmileage" property="personalMileage"/>
 		<result column="name" property="name"/>
 	</resultMap>
 	
@@ -21,11 +21,12 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	<select id="selectall"  resultType="member" >
 		SELECT * FROM MEMBER
 	</select>
+	<!-- #을 붙이면  ""를 붙여서 보냄,  $을 붙이면 있는그대로 보냄 -->
 	<insert id="insert" parameterType="member">
-		INSERT INTO MEMBER VALUES (#{email},#{pwd},#{publicdistance},#{personalmileage},#{name})
-	</insert>
+		INSERT INTO MEMBER VALUES (#{email},#{pwd},#{name},${publicDistance},${personalMileage})
+	</insert>	
 	<update id="update" parameterType="member">
-		UPDATE MEMBER SET PWD=#{pwd}, PUBLICDISTANCE=#{publicdistance},PERSONALMILEAGE=#{personalmileage}, NAME=#{name} WHERE EMAIL=#{email}
+		UPDATE MEMBER SET PWD=#{pwd} WHERE EMAIL=#{email}
 	</update>
 	<delete id="delete" parameterType="String">
 		DELETE FROM MEMBER WHERE EMAIL=#{email}

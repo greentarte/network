@@ -4,11 +4,14 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		 <typeAlias type="com.hw.vo.Member"  alias="member"/>		
+		 <typeAlias type="com.hw.vo.Member"  alias="member"/>
+		 <typeAlias type="com.hw.vo.Car_status"  alias="car_status"/>		
+		 
 		<!-- 프로덕트 추가 -->
 	</typeAliases>
 	<mappers>
-		<mapper resource="com/config/membermapper.xml"/>		
+		<mapper resource="com/config/membermapper.xml"/>
+		<mapper resource="com/config/car_statusmapper.xml"/>		
 		<!-- 쿼리문추가 -->
 	</mappers>
 </configuration>
