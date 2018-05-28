@@ -1,4 +1,4 @@
-package com.hw.Car_status;
+package com.hw.car_control;
 
 import java.util.List;
 
@@ -6,18 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hw.frame.Dao;
-import com.hw.mapper.Car_statusMapper;
-import com.hw.vo.Car_status;
+import com.hw.mapper.Car_controlMapper;
+import com.hw.vo.Car_control;
 
-@Repository("car_statusDao")
-public class Car_statusDao implements Dao<Car_status, String> {
+@Repository("car_controlDao")
+public class Car_controlDao implements Dao<Car_control, String> {
 
 	@Autowired
-	Car_statusMapper mapper;
+	Car_controlMapper mapper;
 	// ¸â¹ö ¸ÊÆÛ¸¦ ÂüÁ¶ÇÏ°Ú´Ù mybatis
 
 	@Override
-	public void insert(Car_status m) {
+	public void insert(Car_control m) {
 		mapper.insert(m);
 	}
 
@@ -27,17 +27,17 @@ public class Car_statusDao implements Dao<Car_status, String> {
 	}
 
 	@Override
-	public void update(Car_status m) {
+	public void update(Car_control m) {
 		mapper.update(m);
 	}
 
 	@Override
-	public Car_status select(String s) {
+	public Car_control select(String s) {
 		return mapper.select(s);
 	}
 
 	@Override
-	public List<Car_status> select() {
+	public List<Car_control> select() {
 		return mapper.selectall();
 	}
 

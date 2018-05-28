@@ -16,8 +16,8 @@ public class Car_status {
 	double monthly_fuel_efficiency;
 	int cumulative_mileage;
 	int charge_amount;
-	float latitude;
-	float longtitude;
+	double latitude;
+	double longtitude;
 	String model_name;
 	String user_name;
 	double charging_after_fuel_efficiency;
@@ -33,7 +33,7 @@ public class Car_status {
 	public Car_status(String code, int available_distance, double battery_capacity, int indoor_temp, int outdoor_temp,
 			int speed, int charging_status, int charging_after_distance, double consumption_after_charging,
 			int monthly_distance, double monthly_battery_use, double monthly_fuel_efficiency, int cumulative_mileage,
-			int charge_amount, float latitude, float longtitude, String model_name, String user_name,
+			int charge_amount, double latitude, double longtitude, String model_name, String user_name,
 			double charging_after_fuel_efficiency) {
 		
 		this.code = code;
@@ -228,25 +228,25 @@ public class Car_status {
 
 
 
-	public float getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
 
 
-	public void setLatitude(float latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
 
 
-	public float getLongtitude() {
+	public double getLongtitude() {
 		return longtitude;
 	}
 
 
 
-	public void setLongtitude(float longtitude) {
+	public void setLongtitude(double longtitude) {
 		this.longtitude = longtitude;
 	}
 

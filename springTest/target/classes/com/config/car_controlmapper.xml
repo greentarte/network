@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hw.mapper.Car_controlMapper">
+	<!-- parameterType = "String" 문자열 입력한다 입력 형태 설정 -->
+	<!-- resultType="member" 받는다 받는 형태 설정 -->
+	<!-- 작성 후 세미콜론을 사용안함 -->
+	<resultMap type="car_control" id="car_controlResult">
+		<result column="seq" property="seq" />
+		<result column="set_temp" property="set_temp" />
+		<result column="set_wind" property="set_wind" />
+		<result column="set_cool" property="set_cool" />
+		<result column="set_warm" property="set_warm" />
+		<result column="set_charging_amount" property="set_charging_amount" />
+		<result column="code" property="code" />
+		<result column="set_date" property="set_date" />
+
+
+	</resultMap>
+
+
+	<select id="select" parameterType="String"  resultType="car_control">
+		SELECT * FROM CAR_CONTROL WHERE CODE=#{code} and ROWNUM=1 ORDER BY SEQ DESC
+		
+		
+	</select>
+	<!-- No use -->
+	<select id="selectall" resultType="car_control">
+		SELECT * FROM CAR_CONTROL
+	</select>
+	
+	<!-- #을 붙이면 ""를 붙여서 보냄, $을 붙이면 있는그대로 보냄 -->
+	<insert id="insert" parameterType="car_status">
+		INSERT INTO CAR_CONTROL (SEQ,SET_TEMP,SET_WIND,SET_COOL,SET_WARM,SET_CHARGING_AMOUNT,CHARGING_PORT,CODE) VALUES(SEQ_num.NEXTVAL,${set_temp},${set_wind},${set_cool},${set_warm},${set_charging_amount},#{code})
+			
+	</insert>
+	<!-- No use -->
+	<update id="update" parameterType="car_status">
+		UPDATE CAR_CONTROL SET SET_TEMP=${set_temp}, SET_WIND=${set_wind},SET_COOL=${set_cool},SET_WARM=${set_warm},SET_CHARGING_AMOUNT=${set_charging_amount}
+		WHERE CODE=#{code}
+	</update>
+	<!-- No use -->
+	<delete id="delete" parameterType="String">
+		DELETE FROM CAR_CONTROL WHERE
+		CODE=#{code}
+	</delete>
+
+</mapper>
+
+
+
+
+
+

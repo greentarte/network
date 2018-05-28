@@ -5,13 +5,15 @@ PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		 <typeAlias type="com.hw.vo.Member"  alias="member"/>
-		 <typeAlias type="com.hw.vo.Car_status"  alias="car_status"/>		
+		 <typeAlias type="com.hw.vo.Car_status"  alias="car_status"/>
+		 <typeAlias type="com.hw.vo.Car_control"  alias="car_control"/>				
 		 
 		<!-- 프로덕트 추가 -->
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/config/membermapper.xml"/>
-		<mapper resource="com/config/car_statusmapper.xml"/>		
+		<mapper resource="com/config/car_statusmapper.xml"/>
+		<mapper resource="com/config/car_controlmapper.xml"/>		
 		<!-- 쿼리문추가 -->
 	</mappers>
 </configuration>
