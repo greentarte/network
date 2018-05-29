@@ -21,14 +21,14 @@ public class Car_statusBiz implements Biz<Car_status, String> {
 
 	@Transactional // 자동 트렌젝션 처리 데이터가 바뀔때
 	@Override
-	public void register(Car_status m) {
-		dao.insert(m);
+	public void register(Car_status code) {
+		dao.insert(code);
 	}
 
 	@Transactional
 	@Override
-	public void remove(String s) {
-		dao.delete(s);
+	public void remove(String code) {
+		dao.delete(code);
 	}
 
 	@Transactional
@@ -39,14 +39,14 @@ public class Car_statusBiz implements Biz<Car_status, String> {
 	}
 
 	@Override
-	public Car_status get(String s) {
-		
-		return dao.select(s);
+	public Car_status get(String code) {
+
+		return dao.select(code);
 	}
 
 	@Override
 	public List<Car_status> get() {
-		
+
 		return dao.select();
 	}
 

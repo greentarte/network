@@ -30,12 +30,13 @@ public class Car_status {
 
 
 
+
 	public Car_status(String code, int available_distance, double battery_capacity, int indoor_temp, int outdoor_temp,
 			int speed, int charging_status, int charging_after_distance, double consumption_after_charging,
 			int monthly_distance, double monthly_battery_use, double monthly_fuel_efficiency, int cumulative_mileage,
 			int charge_amount, double latitude, double longtitude, String model_name, String user_name,
 			double charging_after_fuel_efficiency) {
-		
+		super();
 		this.code = code;
 		this.available_distance = available_distance;
 		this.battery_capacity = battery_capacity;
@@ -55,8 +56,8 @@ public class Car_status {
 		this.model_name = model_name;
 		this.user_name = user_name;
 		this.charging_after_fuel_efficiency = charging_after_fuel_efficiency;
-
 	}
+
 
 
 
@@ -66,9 +67,11 @@ public class Car_status {
 
 
 
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 
 
 
@@ -78,9 +81,11 @@ public class Car_status {
 
 
 
+
 	public void setAvailable_distance(int available_distance) {
 		this.available_distance = available_distance;
 	}
+
 
 
 
@@ -90,9 +95,11 @@ public class Car_status {
 
 
 
+
 	public void setBattery_capacity(double battery_capacity) {
 		this.battery_capacity = battery_capacity;
 	}
+
 
 
 
@@ -102,9 +109,11 @@ public class Car_status {
 
 
 
+
 	public void setIndoor_temp(int indoor_temp) {
 		this.indoor_temp = indoor_temp;
 	}
+
 
 
 
@@ -114,9 +123,11 @@ public class Car_status {
 
 
 
+
 	public void setOutdoor_temp(int outdoor_temp) {
 		this.outdoor_temp = outdoor_temp;
 	}
+
 
 
 
@@ -126,9 +137,11 @@ public class Car_status {
 
 
 
+
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+
 
 
 
@@ -138,9 +151,11 @@ public class Car_status {
 
 
 
+
 	public void setCharging_status(int charging_status) {
 		this.charging_status = charging_status;
 	}
+
 
 
 
@@ -150,9 +165,11 @@ public class Car_status {
 
 
 
+
 	public void setCharging_after_distance(int charging_after_distance) {
 		this.charging_after_distance = charging_after_distance;
 	}
+
 
 
 
@@ -162,9 +179,11 @@ public class Car_status {
 
 
 
+
 	public void setConsumption_after_charging(double consumption_after_charging) {
 		this.consumption_after_charging = consumption_after_charging;
 	}
+
 
 
 
@@ -174,9 +193,11 @@ public class Car_status {
 
 
 
+
 	public void setMonthly_distance(int monthly_distance) {
 		this.monthly_distance = monthly_distance;
 	}
+
 
 
 
@@ -186,9 +207,11 @@ public class Car_status {
 
 
 
+
 	public void setMonthly_battery_use(double monthly_battery_use) {
 		this.monthly_battery_use = monthly_battery_use;
 	}
+
 
 
 
@@ -198,9 +221,11 @@ public class Car_status {
 
 
 
+
 	public void setMonthly_fuel_efficiency(double monthly_fuel_efficiency) {
 		this.monthly_fuel_efficiency = monthly_fuel_efficiency;
 	}
+
 
 
 
@@ -210,9 +235,11 @@ public class Car_status {
 
 
 
+
 	public void setCumulative_mileage(int cumulative_mileage) {
 		this.cumulative_mileage = cumulative_mileage;
 	}
+
 
 
 
@@ -222,9 +249,11 @@ public class Car_status {
 
 
 
+
 	public void setCharge_amount(int charge_amount) {
 		this.charge_amount = charge_amount;
 	}
+
 
 
 
@@ -234,9 +263,11 @@ public class Car_status {
 
 
 
+
 	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
+
 
 
 
@@ -246,9 +277,11 @@ public class Car_status {
 
 
 
+
 	public void setLongtitude(double longtitude) {
 		this.longtitude = longtitude;
 	}
+
 
 
 
@@ -258,9 +291,11 @@ public class Car_status {
 
 
 
+
 	public void setModel_name(String model_name) {
 		this.model_name = model_name;
 	}
+
 
 
 
@@ -270,9 +305,11 @@ public class Car_status {
 
 
 
+
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
+
 
 
 
@@ -282,9 +319,11 @@ public class Car_status {
 
 
 
+
 	public void setCharging_after_fuel_efficiency(double charging_after_fuel_efficiency) {
 		this.charging_after_fuel_efficiency = charging_after_fuel_efficiency;
 	}
+
 
 
 
@@ -300,4 +339,8 @@ public class Car_status {
 				+ ", model_name=" + model_name + ", user_name=" + user_name + ", charging_after_fuel_efficiency="
 				+ charging_after_fuel_efficiency + "]";
 	}
+
+
+
+	
 }

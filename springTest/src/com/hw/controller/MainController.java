@@ -13,6 +13,8 @@ import com.hw.vo.Car_control;
 import com.hw.vo.Car_status;
 import com.hw.vo.Member;
 
+import geocoding.GeocodingAPI;
+
 @Controller
 public class MainController {
 
@@ -28,7 +30,7 @@ public class MainController {
 	@Resource(name = "memberBiz")
 	Biz<Member, String> biz;
 
-	// ·Î±×ÀÎ
+	// ï¿½Î±ï¿½ï¿½ï¿½
 	@RequestMapping("/login.do")
 	public void login(HttpServletResponse res, Member member) throws Exception {
 		res.setCharacterEncoding("UTF-8");
@@ -52,7 +54,7 @@ public class MainController {
 
 	}
 
-	// È¸¿ø°¡ÀÔ
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/join.do")
 	public void join(HttpServletResponse res, Member member) throws Exception {
 		res.setCharacterEncoding("UTF-8");
@@ -70,7 +72,7 @@ public class MainController {
 
 	}
 
-	// ¸®¼Â ÆÐ½º¿öµå
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("/reset.do")
 	public void resest(HttpServletResponse res, Member member) throws Exception {
 		res.setCharacterEncoding("UTF-8");
@@ -90,7 +92,7 @@ public class MainController {
 	@Resource(name = "car_statusBiz")
 	Biz<Car_status, String> biz2;
 
-	// Â÷·® »óÅÂ ¾÷µ¥ÀÌÆ®
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	@RequestMapping("/status_update.do")
 	public void status_update(HttpServletResponse res, Car_status car_status) throws Exception {
 
@@ -111,30 +113,32 @@ public class MainController {
 	@Resource(name = "car_controlBiz")
 	Biz<Car_control, String> biz3;
 
-	// Â÷·® »óÅÂ ¾÷µ¥ÀÌÆ®
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 	@RequestMapping("/control_get.do")
 	public void control_update(HttpServletResponse res, Car_control car_control) throws Exception {
 		res.setCharacterEncoding("UTF-8");
 		PrintWriter out = res.getWriter();
 		try {
-			System.out.println("try");
-			String code="GENSDE123";
-			car_control=biz3.get(code); // ÄÁÆ®·Ñ Å×ÀÌºíÀÇ 1°³ÀÇ ÇàÀ» °¡Á®¿È
-			//¿Ï·á
-			
-			out.print(car_control.getSet_temp() + "/"); // »ç¿ëÀÚÀÇ ¼³Á¤¿Âµµ¸¦ º¸³¿ 00/
-			
-			Car_status car_status = biz2.get("GENSDE123"); // Â÷·®»óÅÂ¿¡¼­
-			System.out.println("==============");
-			out.print(car_status.getAvailable_distance() + "/"); // ÁÖÇà°Å¸® ¹ÞÀ½
-			out.print(Math.round(car_status.getBattery_capacity()) + "/"); // ¹èÅÍ¸® ¿ë·® ¹ÞÀ½
+			String code = "GENSDE123";
+			car_control = biz3.get(code); // ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+			out.print(car_control.getSet_temp() + "/"); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 00/
+
+			Car_status car_status = biz2.get(code); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½
+			out.print(car_status.getAvailable_distance() + "/"); // ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+			out.print(Math.round(car_status.getBattery_capacity()) + "/"); // ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ë·® ï¿½ï¿½ï¿½ï¿½
 			out.print(car_status.getIndoor_temp() + "/");
-			out.print(car_status.getLatitude() + "/");
-			out.print(car_status.getLongtitude());
+
+			// reverse Geocoding
+
+			GeocodingAPI geocodingAPI = new GeocodingAPI();
+			String addres = geocodingAPI.request(car_status.getLatitude(), car_status.getLongtitude());
+			out.print(addres);
+			out.flush();
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			out.println("0");
+
 		}
 
 		out.close();
