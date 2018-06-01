@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 		<result column="set_cool" property="set_cool" />
 		<result column="set_warm" property="set_warm" />
 		<result column="set_charging_amount" property="set_charging_amount" />
+		<result column="charging_port" property="charging_port" />
 		<result column="code" property="code" />
 		<result column="set_date" property="set_date" />
 
@@ -31,12 +32,17 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- #을 붙이면 ""를 붙여서 보냄, $을 붙이면 있는그대로 보냄 -->
-	<insert id="insert" parameterType="car_status">
-		INSERT INTO CAR_CONTROL (SEQ,SET_TEMP,SET_WIND,SET_COOL,SET_WARM,SET_CHARGING_AMOUNT,CHARGING_PORT,CODE) VALUES(SEQ_num.NEXTVAL,${set_temp},${set_wind},${set_cool},${set_warm},${set_charging_amount},#{code})
+	<insert id="insert" parameterType="car_control">
+	<!-- 시퀀스 마이바티스에서 쓰는방법 -->
+	<selectKey keyProperty="seq" resultType="integer" order="BEFORE">
+		select SEQ_num.NEXTVAL FROM DUAL
+	</selectKey>
+		INSERT INTO CAR_CONTROL (SEQ,SET_TEMP,SET_WIND,SET_COOL,SET_WARM,SET_CHARGING_AMOUNT,CHARGING_PORT,CODE) VALUES(${seq},${set_temp},${set_wind},${set_cool},${set_warm},${set_charging_amount},${charging_port},#{code})	
+		
 			
 	</insert>
 	<!-- No use -->
-	<update id="update" parameterType="car_status">
+	<update id="update" parameterType="car_control">
 		UPDATE CAR_CONTROL SET SET_TEMP=${set_temp}, SET_WIND=${set_wind},SET_COOL=${set_cool},SET_WARM=${set_warm},SET_CHARGING_AMOUNT=${set_charging_amount}
 		WHERE CODE=#{code}
 	</update>
